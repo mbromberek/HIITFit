@@ -39,7 +39,7 @@ struct ContentView: View {
       ForEach(0 ..< 4){ index in
         ExcerciseView(index: index)
       }
-    }.tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
+    }.tabViewStyle(PageTabViewStyle(indexDisplayMode: .always))
   }
 }
 
