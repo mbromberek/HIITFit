@@ -35,8 +35,8 @@ import SwiftUI
 struct ContentView: View {
   var body: some View {
     TabView{
-      Text("Welcome!")
-      Text("Exercise 1")
+      WelcomeView()
+      ExcerciseView(index: 0)
       Text("Exercise 2")
     }
   }
