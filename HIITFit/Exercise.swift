@@ -48,6 +48,6 @@ extension Exercise{
     Exercise(exerciseName: ExerciseEnum.squat.rawValue, videoName: "squat"),
     Exercise(exerciseName: ExerciseEnum.stepUp.rawValue, videoName: "step-up"),
     Exercise(exerciseName: ExerciseEnum.burpee.rawValue, videoName: "burpee"),
-    Exercise(exerciseName: ExerciseEnum.sunSalute.rawValue, videoName: "sun-alute"),
+    Exercise(exerciseName: ExerciseEnum.sunSalute.rawValue, videoName: "sun-salute"),
   ]
 }

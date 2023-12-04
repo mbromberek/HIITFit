@@ -31,42 +31,20 @@
 /// THE SOFTWARE.
 
 import SwiftUI
-import AVKit
 
-struct ExcerciseView: View {
-  let index: Int
-  var exercise: Exercise{
-    Exercise.exercises[index]
-  }
-  let interval: TimeInterval = 30 ///30 seconds, TimeInterval is an alias for Double
-  var body: some View {
-    GeometryReader { geometry in
-      VStack{
-        HeaderView(exerciseName: exercise.exerciseName)
-          .padding(.bottom)
-        if let url = Bundle.main.url(forResource: exercise.videoName, withExtension:"mp4"){
-          VideoPlayer(player: AVPlayer(url: url))
-            .frame(height: geometry.size.height * 0.45) ///Video players uses only 45% of the screen height
-        }else{
-          Text("Could not fine \(exercise.videoName).mp4")
-            .foregroundColor(.red)
+struct RatingView: View {
+    var body: some View {
+      HStack {
+        ForEach(0 ..< 5) { _ in
+          Image(systemName: "waveform.path.ecg")
+            .foregroundColor(.gray)
+            .font(.largeTitle)
         }
-        Text(Date().addingTimeInterval(interval), style: .timer)
-          .font(.system(size:geometry.size.height * 0.07))
-        Button("Start/Done"){}
-          .font(.title3)
-          .padding()
-        RatingView().padding()
-        Spacer()
-        Button("History"){}
-          .padding(.bottom)
       }
     }
-  }
 }
 
 #Preview {
-  ExcerciseView(index: 0)
+  RatingView()
+    .previewLayout(.sizeThatFits)
 }
-
-
