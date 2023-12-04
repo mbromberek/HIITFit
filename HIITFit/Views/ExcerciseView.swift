@@ -33,12 +33,13 @@
 import SwiftUI
 
 struct ExcerciseView: View {
-  let videoNames = ["squat", "step-up", "burpee", "sun-sa4lute"]
-  let exerciseNames = ["Squat", "Step Up", "Burpee", "Sun Salute"]
   let index: Int
+  var exercise: Exercise{
+    Exercise.exercises[index]
+  }
   var body: some View {
     VStack{
-      HeaderView(exerciseName: exerciseNames[index])
+      HeaderView(exerciseName: exercise.exerciseName)
       Text("Video player")
       Text("Timer")
       Text("Start/Done button")
@@ -52,19 +53,4 @@ struct ExcerciseView: View {
   ExcerciseView(index: 0)
 }
 
-struct HeaderView: View {
-  let exerciseName: String
-  var body: some View {
-    VStack{
-      Text(exerciseName)
-        .font(.largeTitle)
-      HStack{
-        Image(systemName:"1.circle")
-        Image(systemName:"2.circle")
-        Image(systemName:"3.circle")
-        Image(systemName:"4.circle")
-      }
-      .font(.title2)
-    }
-  }
-}
+
