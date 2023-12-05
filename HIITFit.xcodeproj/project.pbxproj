@@ -10,6 +10,7 @@
 		2738204C2B1CD66900F2DD6F /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2738204B2B1CD66900F2DD6F /* WelcomeView.swift */; };
 		2738204E2B1CD68700F2DD6F /* ExcerciseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2738204D2B1CD68700F2DD6F /* ExcerciseView.swift */; };
 		279151392B1EB774005FC595 /* HistoryStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 279151382B1EB774005FC595 /* HistoryStore.swift */; };
+		2791513B2B1F3DF5005FC595 /* HistoryStoreDevData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2791513A2B1F3DF5005FC595 /* HistoryStoreDevData.swift */; };
 		27C6F9332B1D626A00955C91 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C6F9322B1D626A00955C91 /* HeaderView.swift */; };
 		27C6F9352B1DF44300955C91 /* Exercise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C6F9342B1DF44300955C91 /* Exercise.swift */; };
 		27C6F9372B1E61B900955C91 /* RatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C6F9362B1E61B900955C91 /* RatingView.swift */; };
@@ -31,6 +32,7 @@
 		2738204B2B1CD66900F2DD6F /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
 		2738204D2B1CD68700F2DD6F /* ExcerciseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExcerciseView.swift; sourceTree = "<group>"; };
 		279151382B1EB774005FC595 /* HistoryStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryStore.swift; sourceTree = "<group>"; };
+		2791513A2B1F3DF5005FC595 /* HistoryStoreDevData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryStoreDevData.swift; sourceTree = "<group>"; };
 		27C6F9322B1D626A00955C91 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		27C6F9342B1DF44300955C91 /* Exercise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Exercise.swift; path = HIITFit/Model/Exercise.swift; sourceTree = SOURCE_ROOT; };
 		27C6F9362B1E61B900955C91 /* RatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingView.swift; sourceTree = "<group>"; };
@@ -120,6 +122,7 @@
 			isa = PBXGroup;
 			children = (
 				CD30C92A251474DD0049DB93 /* Preview Assets.xcassets */,
+				2791513A2B1F3DF5005FC595 /* HistoryStoreDevData.swift */,
 			);
 			path = "Preview Content";
 			sourceTree = "<group>";
@@ -237,6 +240,7 @@
 				CD30C926251474DC0049DB93 /* ContentView.swift in Sources */,
 				27C6F9372B1E61B900955C91 /* RatingView.swift in Sources */,
 				279151392B1EB774005FC595 /* HistoryStore.swift in Sources */,
+				2791513B2B1F3DF5005FC595 /* HistoryStoreDevData.swift in Sources */,
 				2738204E2B1CD68700F2DD6F /* ExcerciseView.swift in Sources */,
 				27C6F93D2B1EAA9D00955C91 /* HistoryView.swift in Sources */,
 				CD30C93F25147A8C0049DB93 /* DateExtension.swift in Sources */,
@@ -424,7 +428,7 @@
 				CD30C92E251474DD0049DB93 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		CD30C92F251474DD0049DB93 /* Build configuration list for PBXNativeTarget "HIITFit" */ = {
 			isa = XCConfigurationList;
@@ -433,7 +437,7 @@
 				CD30C931251474DD0049DB93 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
 	};
