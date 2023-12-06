@@ -33,15 +33,17 @@
 import SwiftUI
 
 struct ContentView: View {
+  @State private var selectedTab = 9
   var body: some View {
-    TabView{
-      WelcomeView()
-//      ForEach(0 ..< 4){ index in
-      /// \.self means each element is its own unique identifier
-      ForEach(Exercise.exercises.indices, id: \.self){index in
-        ExcerciseView(index: index)
+    TabView(selection: $selectedTab){
+      WelcomeView(selectedTab: $selectedTab)
+        .tag(9)
+      ForEach(Exercise.exercises.indices, id:\.self){ index in
+        ExcerciseView(selectedTab: $selectedTab, index: index)
+          .tag(index)
       }
-    }.tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
+    }
+      .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
   }
 }
 
