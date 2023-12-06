@@ -40,6 +40,7 @@ struct ExcerciseView: View {
     Exercise.exercises[index]
   }
   let interval: TimeInterval = 30 ///30 seconds, TimeInterval is an alias for Double
+  @State private var rating = 0
   var lastExercise: Bool{ ///Checks if this is the last exercise
     index + 1 == Exercise.exercises.count
   }
@@ -66,7 +67,7 @@ struct ExcerciseView: View {
         }
           .font(.title3)
           .padding()
-        RatingView().padding()
+        RatingView(rating: $rating).padding()
         Spacer()
         Button("History"){}
           .padding(.bottom)
