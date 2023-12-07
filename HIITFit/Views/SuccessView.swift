@@ -33,35 +33,40 @@
 import SwiftUI
 
 struct SuccessView: View {
-    var body: some View {
-      ZStack{
-        VStack{
-          Image(systemName: "hand.raised.fill")
-            .resizedToFill(width: 75, height: 75)
-            .foregroundColor(.purple)
-          Text("High Five!")
-            .font(.largeTitle)
-            .fontWeight(.bold)
-          Text("""
+  @Environment(\.dismiss) var dismiss
+  @Binding var selectedTab: Int
+  var body: some View {
+    ZStack{
+      VStack{
+        Image(systemName: "hand.raised.fill")
+          .resizedToFill(width: 75, height: 75)
+          .foregroundColor(.purple)
+        Text("High Five!")
+          .font(.largeTitle)
+          .fontWeight(.bold)
+        Text("""
           Good job completing all four exercises!
           Remember tomorrows another day.
           So eat well and get some rest.
           """)
-            .foregroundColor(.gray)
-            .multilineTextAlignment(.center)
+        .foregroundColor(.gray)
+        .multilineTextAlignment(.center)
+      }
+      .padding()
+      .background(Rectangle()
+        .stroke(Color.gray, lineWidth: 2))
+      VStack{
+        Spacer()
+        Button("Continue"){
+          selectedTab = 9
+          dismiss()
         }
-          .padding()
-          .background(Rectangle()
-          .stroke(Color.gray, lineWidth: 2))
-        VStack{
-          Spacer()
-          Button("Continue"){}
-            .padding(.bottom, 20.0)
-        }
+          .padding(.bottom, 20.0)
       }
     }
+  }
 }
 
 #Preview {
-    SuccessView()
+  SuccessView(selectedTab: .constant(3))
 }

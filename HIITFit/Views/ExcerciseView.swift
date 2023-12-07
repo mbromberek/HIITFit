@@ -36,6 +36,7 @@ import AVKit
 struct ExcerciseView: View {
   @Binding var selectedTab: Int
   @State private var showHistory = false
+  @State private var showSuccess = false
   let index: Int
   var exercise: Exercise{
     Exercise.exercises[index]
@@ -50,7 +51,11 @@ struct ExcerciseView: View {
   }
   var doneButton: some View{
     Button("Done"){
-      selectedTab = lastExercise ? 9 : selectedTab + 1
+      if lastExercise{
+        showSuccess.toggle()
+      }else{
+        selectedTab += 1
+      }
     }
   }
   var body: some View {
@@ -65,6 +70,10 @@ struct ExcerciseView: View {
         HStack(spacing: 150){
           startButton
           doneButton
+            .sheet(isPresented: $showSuccess, content: {
+              SuccessView(selectedTab: $selectedTab)
+                .presentationDetents([.medium, .large])
+            })
         }
           .font(.title3)
           .padding()
@@ -83,7 +92,7 @@ struct ExcerciseView: View {
 }
 
 #Preview {
-  ExcerciseView(selectedTab: .constant(1), index: 1)
+  ExcerciseView(selectedTab: .constant(3), index: 1)
 }
 
 
