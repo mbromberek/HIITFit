@@ -35,6 +35,7 @@ import AVKit
 
 struct ExcerciseView: View {
   @Binding var selectedTab: Int
+  @State private var showHistory = false
   let index: Int
   var exercise: Exercise{
     Exercise.exercises[index]
@@ -69,7 +70,12 @@ struct ExcerciseView: View {
           .padding()
         RatingView(rating: $rating).padding()
         Spacer()
-        Button("History"){}
+        Button("History"){
+          showHistory.toggle()
+        }
+        .sheet(isPresented: $showHistory, content: {
+          HistoryView(showHistory: $showHistory)
+        })
           .padding(.bottom)
       }
     }
