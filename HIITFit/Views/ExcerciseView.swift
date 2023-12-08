@@ -72,21 +72,24 @@ struct ExcerciseView: View {
           .padding(.bottom)
         VideoPlayerView(videoName: exercise.videoName)
           .frame(height: geometry.size.height * 0.45) ///Video players uses only 45% of the screen height
-        if showTimer{
-          TimerView(timerDone: $timerDone, size: geometry.size.height * 0.07)
-        }
         HStack(spacing: 150){
           startButton
           doneButton
-            .sheet(isPresented: $showSuccess, content: {
+            . disabled(!timerDone)
+            .sheet(isPresented: $showSuccess) {
               SuccessView(selectedTab: $selectedTab)
                 .presentationDetents([.medium, .large])
-            })
+            }
         }
           .font(.title3)
           .padding()
-        RatingView(rating: $rating).padding()
+        if showTimer{
+          TimerView(timerDone: $timerDone, size: geometry.size.height * 0.07)
+        }
         Spacer()
+        RatingView(rating: $rating) //Move RatingView below Spacer
+          .padding()
+        
         Button("History"){
           showHistory.toggle()
         }
