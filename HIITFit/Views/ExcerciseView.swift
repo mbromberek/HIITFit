@@ -41,22 +41,29 @@ struct ExcerciseView: View {
   var exercise: Exercise{
     Exercise.exercises[index]
   }
-  let interval: TimeInterval = 30 ///30 seconds, TimeInterval is an alias for Double
+//  let interval: TimeInterval = 30 ///30 seconds, TimeInterval is an alias for Double
+  @State private var timerDone = false
+  @State private var showTimer = false
   @State private var rating = 0
   var lastExercise: Bool{ ///Checks if this is the last exercise
     index + 1 == Exercise.exercises.count
   }
   var startButton: some View{
-    Button("Start Exercise") {}
+    Button("Start Exercise") {
+      showTimer.toggle()
+    }
   }
   var doneButton: some View{
     Button("Done"){
+      timerDone = false
+      showTimer.toggle()
       if lastExercise{
         showSuccess.toggle()
       }else{
         selectedTab += 1
       }
     }
+      .disabled(!timerDone)
   }
   var body: some View {
     GeometryReader { geometry in
@@ -65,8 +72,9 @@ struct ExcerciseView: View {
           .padding(.bottom)
         VideoPlayerView(videoName: exercise.videoName)
           .frame(height: geometry.size.height * 0.45) ///Video players uses only 45% of the screen height
-        Text(Date().addingTimeInterval(interval), style: .timer)
-          .font(.system(size:geometry.size.height * 0.07))
+        if showTimer{
+          TimerView(timerDone: $timerDone, size: geometry.size.height * 0.07)
+        }
         HStack(spacing: 150){
           startButton
           doneButton
@@ -92,7 +100,7 @@ struct ExcerciseView: View {
 }
 
 #Preview {
-  ExcerciseView(selectedTab: .constant(3), index: 1)
+  ExcerciseView(selectedTab: .constant(3), index: 3)
 }
 
 
