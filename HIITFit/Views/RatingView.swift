@@ -33,7 +33,9 @@
 import SwiftUI
 
 struct RatingView: View {
-  @Binding var rating: Int
+  let exerciseIndex: Int
+  @AppStorage("ratings") private var ratings = "0000"
+  @State private var rating = 0
   let maximumRating = 5
   let onColor = Color.red
   let offColor = Color.gray
@@ -43,17 +45,35 @@ struct RatingView: View {
       ForEach(0 ..< 5) { index in
         Image(systemName: "waveform.path.ecg")
           .foregroundColor(
-            index > rating ? offColor : onColor
+            index >= rating ? offColor : onColor
           )
           .onTapGesture {
-            rating = index
+            updateRating(index: index+1)
+          }
+          .onAppear{
+            let index = ratings.index(ratings.startIndex, offsetBy: exerciseIndex)
+            let character = ratings[index]
+            rating = character.wholeNumberValue ?? 0 ///If character is not an integer then will get nil so replace with 0
           }
       }
     }.font(.largeTitle)
   }
+  
+  func updateRating(index: Int){
+    rating = index
+    let index = ratings.index(ratings.startIndex, offsetBy: exerciseIndex)
+    ///Create RangeExpression with index...index and replace the range with the new rating value
+    ratings.replaceSubrange(index...index, with: String(rating))
+  }
 }
 
-#Preview {
-  RatingView(rating: .constant(4))
-    .previewLayout(.sizeThatFits)
+struct RatingView_Previews: PreviewProvider{
+  @AppStorage("ratings") static var ratings: String?
+  static var previews: some View{
+    ratings = nil
+    return RatingView(exerciseIndex: 0)
+      .previewLayout(.sizeThatFits)
+  }
 }
+
+

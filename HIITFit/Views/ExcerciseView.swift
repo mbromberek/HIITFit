@@ -45,7 +45,6 @@ struct ExcerciseView: View {
 //  let interval: TimeInterval = 30 ///30 seconds, TimeInterval is an alias for Double
   @State private var timerDone = false
   @State private var showTimer = false
-  @State private var rating = 0
   var lastExercise: Bool{ ///Checks if this is the last exercise
     index + 1 == Exercise.exercises.count
   }
@@ -89,7 +88,7 @@ struct ExcerciseView: View {
           TimerView(timerDone: $timerDone, size: geometry.size.height * 0.07)
         }
         Spacer()
-        RatingView(rating: $rating) //Move RatingView below Spacer
+        RatingView(exerciseIndex: index)
           .padding()
         
         Button("History"){
