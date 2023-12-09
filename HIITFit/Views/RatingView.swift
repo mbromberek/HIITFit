@@ -51,14 +51,21 @@ struct RatingView: View {
             updateRating(index: index+1)
           }
           .onAppear{
-            let index = ratings.index(ratings.startIndex, offsetBy: exerciseIndex)
-            let character = ratings[index]
-            rating = character.wholeNumberValue ?? 0 ///If character is not an integer then will get nil so replace with 0
+            convertRating()
+          }
+          .onChange(of: ratings){_ in
+            convertRating()
           }
       }
     }.font(.largeTitle)
   }
-  
+ 
+  fileprivate func convertRating(){
+    let index = ratings.index(ratings.startIndex, offsetBy: exerciseIndex)
+    let character = ratings[index]
+    rating = character.wholeNumberValue ?? 0 ///If character is not an integer then will get nil so replace with 0
+
+  }
   func updateRating(index: Int){
     rating = index
     let index = ratings.index(ratings.startIndex, offsetBy: exerciseIndex)
