@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		272ADEC52B26298000D6B57C /* RaisedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 272ADEC42B26298000D6B57C /* RaisedButton.swift */; };
 		2738204C2B1CD66900F2DD6F /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2738204B2B1CD66900F2DD6F /* WelcomeView.swift */; };
 		2738204E2B1CD68700F2DD6F /* ExcerciseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2738204D2B1CD68700F2DD6F /* ExcerciseView.swift */; };
 		273829682B23A740004CFFE2 /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 273829672B23A740004CFFE2 /* TimerView.swift */; };
@@ -31,6 +32,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		272ADEC42B26298000D6B57C /* RaisedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RaisedButton.swift; sourceTree = "<group>"; };
 		2738204B2B1CD66900F2DD6F /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
 		2738204D2B1CD68700F2DD6F /* ExcerciseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExcerciseView.swift; sourceTree = "<group>"; };
 		273829672B23A740004CFFE2 /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
@@ -79,6 +81,7 @@
 				27C6F93C2B1EAA9D00955C91 /* HistoryView.swift */,
 				2791513C2B1FE15F005FC595 /* SuccessView.swift */,
 				273829672B23A740004CFFE2 /* TimerView.swift */,
+				272ADEC42B26298000D6B57C /* RaisedButton.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -242,6 +245,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				273829682B23A740004CFFE2 /* TimerView.swift in Sources */,
+				272ADEC52B26298000D6B57C /* RaisedButton.swift in Sources */,
 				2738204C2B1CD66900F2DD6F /* WelcomeView.swift in Sources */,
 				27C6F9352B1DF44300955C91 /* Exercise.swift in Sources */,
 				CD30C926251474DC0049DB93 /* ContentView.swift in Sources */,

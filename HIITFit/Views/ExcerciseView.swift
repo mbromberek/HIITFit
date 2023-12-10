@@ -49,7 +49,7 @@ struct ExcerciseView: View {
     index + 1 == Exercise.exercises.count
   }
   var startButton: some View{
-    Button("Start Exercise") {
+    RaisedButton(buttonText: "Start Exercise"){
       showTimer.toggle()
     }
   }

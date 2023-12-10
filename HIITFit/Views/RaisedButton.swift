@@ -32,52 +32,60 @@
 
 import SwiftUI
 
-struct WelcomeView: View {
-  @Binding var selectedTab: Int
-  @State private var showHistory = false
-  var getStartedButton: some View{
-    RaisedButton(buttonText: "Get Started"){
-      selectedTab = 0
-    }
-      .padding()
-  }
+struct RaisedButton: View {
+  let buttonText: String
+  let action: () -> Void
+  
   var body: some View {
-    ZStack{
-      VStack{
-        HeaderView(selectedTab: $selectedTab, titleText: "Welcome")
-        Spacer()
-        Button("History"){
-          showHistory.toggle()
-        }
-        .sheet(isPresented: $showHistory, content: {
-          HistoryView(showHistory: $showHistory)
-        })
-        .padding(.bottom)
-      }
-      VStack{
-        HStack (alignment:.bottom){
-          VStack(alignment: .leading){
-            Text("Get fit")
-              .font(.largeTitle)
-            Text("with high intensity interval training")
-              .font(.headline)
-          }
-          Image("step-up")
-            .resizedToFill(width: 240.0, height: 240.0)
-            .clipShape(/*@START_MENU_TOKEN@*/Circle()/*@END_MENU_TOKEN@*/)
-        }
-//        Button(action: { selectedTab = 0 }){
-//          Text("Get Started")
-//            .raisedButtonTextStyle()
-//        }
-//        .buttonStyle(.raised)
-//        .padding()
-        getStartedButton
-      }
-    }
+    Button(action: {
+      action()
+    }, label: {
+      Text(buttonText)
+        .raisedButtonTextStyle()
+    })
+    .buttonStyle(.raised)
   }
 }
 
-#Preview {
-  WelcomeView(selectedTab: .constant(9))
+extension ButtonStyle where Self == RaisedButtonStyle{
+  static var raised: RaisedButtonStyle{
+    .init()
+  }
 }
+
+struct RaisedButtonStyle: ButtonStyle {
+  func makeBody(configuration: Configuration) -> some View {
+    configuration.label
+      .frame(maxWidth: .infinity)
+      .padding([.top, .bottom], 12)
+      .background(
+        Capsule()
+          .foregroundColor(Color("background"))
+          .shadow(color: Color("drop-shadow"), radius: 4, x: 6, y: 6)
+          .shadow(color: Color("drop-highlight"), radius: 4, x: -6, y: -6)
+      )
+  }
+}
+
+extension Text{
+  func raisedButtonTextStyle() -> some View{
+    self
+      .font(.body)
+      .fontWeight(.bold)
+  }
+}
+
+struct RaisedButton_Previews: PreviewProvider{
+  static var previews: some View {
+    ZStack {
+      RaisedButton(buttonText: "Get Started") {
+        print("Hello World")
+      }
+      .buttonStyle(.raised)
+      .padding(20)
+    }
+    .background(Color("background"))
+    .previewLayout(.sizeThatFits)
+  }
+}
+
