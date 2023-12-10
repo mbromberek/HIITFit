@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		272ADEC52B26298000D6B57C /* RaisedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 272ADEC42B26298000D6B57C /* RaisedButton.swift */; };
+		272ADEC72B26539300D6B57C /* EmbossedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 272ADEC62B26539300D6B57C /* EmbossedButton.swift */; };
 		2738204C2B1CD66900F2DD6F /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2738204B2B1CD66900F2DD6F /* WelcomeView.swift */; };
 		2738204E2B1CD68700F2DD6F /* ExcerciseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2738204D2B1CD68700F2DD6F /* ExcerciseView.swift */; };
 		273829682B23A740004CFFE2 /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 273829672B23A740004CFFE2 /* TimerView.swift */; };
@@ -33,6 +34,7 @@
 
 /* Begin PBXFileReference section */
 		272ADEC42B26298000D6B57C /* RaisedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RaisedButton.swift; sourceTree = "<group>"; };
+		272ADEC62B26539300D6B57C /* EmbossedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmbossedButton.swift; sourceTree = "<group>"; };
 		2738204B2B1CD66900F2DD6F /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
 		2738204D2B1CD68700F2DD6F /* ExcerciseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExcerciseView.swift; sourceTree = "<group>"; };
 		273829672B23A740004CFFE2 /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
@@ -82,6 +84,7 @@
 				2791513C2B1FE15F005FC595 /* SuccessView.swift */,
 				273829672B23A740004CFFE2 /* TimerView.swift */,
 				272ADEC42B26298000D6B57C /* RaisedButton.swift */,
+				272ADEC62B26539300D6B57C /* EmbossedButton.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -259,6 +262,7 @@
 				CD30C924251474DC0049DB93 /* HIITFitApp.swift in Sources */,
 				CD30C94025147A8C0049DB93 /* ImageExtension.swift in Sources */,
 				27C6F9332B1D626A00955C91 /* HeaderView.swift in Sources */,
+				272ADEC72B26539300D6B57C /* EmbossedButton.swift in Sources */,
 				27C6F93B2B1E912900955C91 /* VideoPlayerView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
