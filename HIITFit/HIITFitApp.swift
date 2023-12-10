@@ -34,11 +34,26 @@ import SwiftUI
 
 @main
 struct HIITFitApp: App {
+  ///StateObject is a read-only property wrapper. You get one chance to initialize it and cannot change the property once you set it.
+  @StateObject private var historyStore = HistoryStore()
+
   var body: some Scene {
     WindowGroup {
       ContentView()
+        .environmentObject(historyStore)
         .onAppear{
           print(URL.documentsDirectory)
+        }
+        .alert(isPresented: $historyStore.loadingError){
+          Alert(
+            title: Text("History"),
+            message:Text(
+              """
+              Unfortunately we cannot load your past history.
+              Email support:
+                support@xyz.com
+              """)
+          )
         }
     }
   }

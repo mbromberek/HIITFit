@@ -36,13 +36,27 @@ struct ExerciseDay: Identifiable{
   let date: Date
   var exercises: [String] = []
 }
+enum FileError: Error{
+  case loadFailure
+  case saveFailure
+}
+
 class HistoryStore: ObservableObject{
   @Published var exerciseDays: [ExerciseDay] = []
+  @Published var loadingError = false
+  var dataURL: URL{
+    URL.documentsDirectory.appendingPathComponent("history.plist")
+  }
   
   init(){
     #if DEBUG
 //    createDevData()
     #endif
+    do{
+      try load()
+    }catch{
+      loadingError = true
+    }
   }
   
   func addDoneExercise(_ exerciseName: String){
@@ -54,6 +68,66 @@ class HistoryStore: ObservableObject{
     }else{
       //print("Insert \(exerciseName)")
       exerciseDays.insert(ExerciseDay(date: today, exercises: [exerciseName]), at: 0)
+    }
+    do{
+      try save()
+    }catch{
+      fatalError(error.localizedDescription)
+    }
+  }
+  
+  func load() throws{
+    ///Read History data, if there is no history data the guard let prevent an error and just returns from function.
+    guard let data = try? Data(contentsOf: dataURL) else{
+      return
+    }
+    do {
+      let plistData = try PropertyListSerialization.propertyList(
+        from: data,
+        options: [],
+        format: nil)
+      let convertedPlistData = plistData as? [[Any]] ?? []
+      exerciseDays = convertedPlistData.map{
+        ExerciseDay(
+          date: $0[1] as? Date ?? Date(),
+          exercises: $0[2] as? [String] ?? []
+        )
+      }
+    }catch{
+      throw FileError.loadFailure
+    }
+  }
+  
+  func save() throws{
+    /*var plistData: [[Any]] = []
+    for exerciseDay in exerciseDays {
+      plistData.append(([
+        exerciseDay.id.uuidString,
+        exerciseDay.date,
+        exerciseDay.exercises
+      ]))
+    }*/
+    ///An advantage using map for this is you can make plistData a constant
+    /*let plistData: [[Any]] = exerciseDays.map { exerciseDay in
+      [
+        exerciseDay.id.uuidString,
+        exerciseDay.date,
+        exerciseDay.exercises
+      ]
+    }*/
+    
+    let plistData = exerciseDays.map{
+      [$0.id.uuidString, $0.date, $0.exercises]
+    }
+    
+    do {
+      let data = try PropertyListSerialization.data(
+        fromPropertyList: plistData,
+        format: .binary,
+        options: .zero)
+      try data.write(to: dataURL, options: .atomic)
+    } catch {
+      throw FileError.saveFailure
     }
   }
 }

@@ -35,8 +35,6 @@ import SwiftUI
 struct ContentView: View {
 //  @State private var selectedTab = 9
   @SceneStorage("selectedTab") private var selectedTab = 9
-  ///StateObject is a read-only property wrapper. You get one chance to initialize it and cannot change the property once you set it.
-  @StateObject private var historyStore = HistoryStore()
   var body: some View {
     TabView(selection: $selectedTab){
       WelcomeView(selectedTab: $selectedTab)
@@ -46,7 +44,6 @@ struct ContentView: View {
           .tag(index)
       }
     }
-      .environmentObject(historyStore)
       .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
     
   }
