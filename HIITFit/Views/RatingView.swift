@@ -43,7 +43,7 @@ struct RatingView: View {
   var body: some View {
     HStack {
       ForEach(0 ..< 5) { index in
-        Image(systemName: "waveform.path.ecg")
+        /*Image(systemName: "waveform.path.ecg")
           .foregroundColor(
             index >= rating ? offColor : onColor
           )
@@ -54,6 +54,22 @@ struct RatingView: View {
             convertRating()
           }
           .onChange(of: ratings){_ in
+            convertRating()
+          }*/
+        Button(action: {
+          updateRating(index: index)
+        }, label: {
+          Image(systemName: "waveform.path.ecg")
+            .foregroundColor(
+              index > rating ? offColor : onColor
+            )
+            .font(.body)
+        })
+          .buttonStyle(EmbossedButtonStyle(buttonShape: .round))
+          .onChange(of: ratings){ _ in
+            convertRating()
+          }
+          .onAppear{
             convertRating()
           }
       }
