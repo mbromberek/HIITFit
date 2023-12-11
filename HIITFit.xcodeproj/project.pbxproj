@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		272ADEC52B26298000D6B57C /* RaisedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 272ADEC42B26298000D6B57C /* RaisedButton.swift */; };
 		272ADEC72B26539300D6B57C /* EmbossedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 272ADEC62B26539300D6B57C /* EmbossedButton.swift */; };
+		272ADEC92B276E4E00D6B57C /* ContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 272ADEC82B276E4E00D6B57C /* ContainerView.swift */; };
+		272ADECB2B277A0600D6B57C /* WelcomeImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 272ADECA2B277A0600D6B57C /* WelcomeImages.swift */; };
 		2738204C2B1CD66900F2DD6F /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2738204B2B1CD66900F2DD6F /* WelcomeView.swift */; };
 		2738204E2B1CD68700F2DD6F /* ExcerciseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2738204D2B1CD68700F2DD6F /* ExcerciseView.swift */; };
 		273829682B23A740004CFFE2 /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 273829672B23A740004CFFE2 /* TimerView.swift */; };
@@ -35,6 +37,8 @@
 /* Begin PBXFileReference section */
 		272ADEC42B26298000D6B57C /* RaisedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RaisedButton.swift; sourceTree = "<group>"; };
 		272ADEC62B26539300D6B57C /* EmbossedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmbossedButton.swift; sourceTree = "<group>"; };
+		272ADEC82B276E4E00D6B57C /* ContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerView.swift; sourceTree = "<group>"; };
+		272ADECA2B277A0600D6B57C /* WelcomeImages.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeImages.swift; sourceTree = "<group>"; };
 		2738204B2B1CD66900F2DD6F /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
 		2738204D2B1CD68700F2DD6F /* ExcerciseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExcerciseView.swift; sourceTree = "<group>"; };
 		273829672B23A740004CFFE2 /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
@@ -84,7 +88,9 @@
 				2791513C2B1FE15F005FC595 /* SuccessView.swift */,
 				273829672B23A740004CFFE2 /* TimerView.swift */,
 				272ADEC42B26298000D6B57C /* RaisedButton.swift */,
+				272ADECA2B277A0600D6B57C /* WelcomeImages.swift */,
 				272ADEC62B26539300D6B57C /* EmbossedButton.swift */,
+				272ADEC82B276E4E00D6B57C /* ContainerView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -249,11 +255,13 @@
 			files = (
 				273829682B23A740004CFFE2 /* TimerView.swift in Sources */,
 				272ADEC52B26298000D6B57C /* RaisedButton.swift in Sources */,
+				272ADEC92B276E4E00D6B57C /* ContainerView.swift in Sources */,
 				2738204C2B1CD66900F2DD6F /* WelcomeView.swift in Sources */,
 				27C6F9352B1DF44300955C91 /* Exercise.swift in Sources */,
 				CD30C926251474DC0049DB93 /* ContentView.swift in Sources */,
 				27C6F9372B1E61B900955C91 /* RatingView.swift in Sources */,
 				279151392B1EB774005FC595 /* HistoryStore.swift in Sources */,
+				272ADECB2B277A0600D6B57C /* WelcomeImages.swift in Sources */,
 				2791513B2B1F3DF5005FC595 /* HistoryStoreDevData.swift in Sources */,
 				2791513D2B1FE15F005FC595 /* SuccessView.swift in Sources */,
 				2738204E2B1CD68700F2DD6F /* ExcerciseView.swift in Sources */,

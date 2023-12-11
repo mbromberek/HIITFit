@@ -32,61 +32,38 @@
 
 import SwiftUI
 
-struct WelcomeView: View {
-  @Binding var selectedTab: Int
-  @State private var showHistory = false
-  var getStartedButton: some View{
-    RaisedButton(buttonText: "Get Started"){
-      selectedTab = 0
-    }
-      .padding()
-  }
-  var historyButton: some View{
-    Button(
-      action: {
-        showHistory = true
-      }, label: {
-        Text("History")
-          .fontWeight(.bold)
-          .padding([.leading, .trailing], 5)
-      }
-    )
-      .padding(.bottom, 10)
-      .buttonStyle(EmbossedButtonStyle())
-  }
+struct ContainerView<Content: View>: View {
+  var content: Content
   var body: some View {
-    GeometryReader{ geometry in
+    ZStack{
+      RoundedRectangle(cornerRadius: 25.0)
+        .foregroundColor(Color("background"))
       VStack{
-        HeaderView(selectedTab: $selectedTab, titleText: "Welcome")
         Spacer()
-        //container view
-        ContainerView{
-          ViewThatFits{
-            VStack{
-              WelcomeView.images
-              WelcomeView.welcomeText
-              getStartedButton
-              Spacer()
-              historyButton
-            }
-            
-            VStack{
-              WelcomeView.welcomeText
-              getStartedButton
-              Spacer()
-              historyButton
-            }
-          }
-        }
-          .frame(height: geometry.size.height * 0.8)
+        Rectangle()
+          .frame(height: 25)
+          .foregroundColor(Color("background"))
       }
-      .sheet(isPresented: $showHistory) {
-        HistoryView(showHistory: $showHistory)
-      }
+      content
     }
+  }
+  
+  init(@ViewBuilder content: () -> Content){
+    self.content = content()
   }
 }
 
-#Preview {
-  WelcomeView(selectedTab: .constant(9))
+struct Container_Previews: PreviewProvider {
+  static var previews: some View{
+    ContainerView{
+      VStack{
+        RaisedButton(buttonText: "Hello World") {}
+          .padding(50)
+        Button("Tap me!"){}
+          .buttonStyle(EmbossedButtonStyle(buttonShape: .round))
+      }
+      .padding(50)
+      .previewLayout(.sizeThatFits)
+    }
+  }
 }
