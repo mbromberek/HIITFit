@@ -48,15 +48,22 @@ class HistoryStore: ObservableObject{
     URL.documentsDirectory.appendingPathComponent("history.plist")
   }
   
-  init(){
-    #if DEBUG
-//    createDevData()
-    #endif
+  init(preview: Bool = false){
     do{
       try load()
     }catch{
       loadingError = true
     }
+    #if DEBUG
+    if preview{
+      createDevData()
+    }else{
+      if exerciseDays.isEmpty{
+        copyHistoryTestData()
+        try? load()
+      }
+    }
+    #endif
   }
   
   func addDoneExercise(_ exerciseName: String){

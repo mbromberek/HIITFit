@@ -36,37 +36,53 @@ struct HistoryView: View {
   @Binding var showHistory: Bool
   @EnvironmentObject var history: HistoryStore
   
-  var body: some View {
-    ZStack(alignment: .topTrailing){
-      Button(action: { showHistory.toggle() }){
+  var headerView: some View {
+    HStack {
+      Spacer()
+      Text("History")
+        .font(.title)
+      Spacer()
+      Button {
+        showHistory.toggle()
+      } label: {
         Image(systemName: "xmark.circle")
       }
-        .font(.title)
+      .font(.title)
+    }
+  }
+  
+  func dayView(day: ExerciseDay) -> some View {
+    Section(
+      header:
+        Text(day.date.formatted(as: "MMM d"))
+        .font(.headline)) {
+          exerciseView(day: day)
+        }
+  }
+  
+  func exerciseView(day: ExerciseDay) -> some View {
+    ForEach(day.exercises, id: \.self) { exercise in
+      Text(exercise)
+    }
+  }
+  
+  var body: some View {
+    VStack {
+      headerView
         .padding()
-      VStack{
-        Text("History")
-          .font(.title)
-          .padding()
-        Form{
-          ForEach(history.exerciseDays){day in
-            Section(
-              header: Text(day.date.formatted(as:"MMM d"))
-                .font(.headline)
-            ){
-              ForEach(day.exercises, id: \.self){ exercise in
-                Text(exercise)
-              }
-            }.font(.title2)
-          }
+      Form {
+        ForEach(history.exerciseDays) { day in
+          dayView(day: day)
         }
       }
     }
-      .font(.title)
-      .padding(.trailing)
   }
 }
 
-#Preview {
-  HistoryView(showHistory: .constant(true))
-    .environmentObject(HistoryStore())
+struct HistoryView_Previews: PreviewProvider {
+  static var history = HistoryStore(preview: true)
+  static var previews: some View {
+    HistoryView(showHistory: .constant(true))
+      .environmentObject(history)
+  }
 }
