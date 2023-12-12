@@ -58,7 +58,7 @@ struct WelcomeView: View {
     GeometryReader{ geometry in
       VStack{
         HeaderView(selectedTab: $selectedTab, titleText: "Welcome")
-        Spacer()
+//        Spacer()
         //container view
         ContainerView{
           ViewThatFits{

@@ -37,7 +37,8 @@ struct RatingView: View {
   @AppStorage("ratings") private var ratings = ""
   @State private var rating = 0
   let maximumRating = 5
-  let onColor = Color.red
+//  let onColor = Color.red
+  let onColor = Color("ratings")
   let offColor = Color.gray
   
   var body: some View {

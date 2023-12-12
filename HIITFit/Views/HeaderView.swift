@@ -36,16 +36,52 @@ struct HeaderView: View {
   @Binding var selectedTab: Int
   let titleText: String
   var body: some View {
+    let fontColor = Color.teal
     VStack{
       Text(titleText)
         .font(.largeTitle)
+        .foregroundColor(fontColor)
+        .fontWeight(.black)
+        .padding(.init(top: 0, leading: 0, bottom: 0, trailing: 0))
       HStack{
         ForEach(Exercise.exercises.indices, id: \.self){ index in
-          let fill = index == selectedTab ? ".fill": ""
+          ///Pre ch09 Challenge
+          /*let fill = index == selectedTab ? ".fill": ""
           Image(systemName: "\(index + 1).circle\(fill)")
             .onTapGesture {
               selectedTab = index
-            }
+            }*/
+          ///My solution
+          let opacity = index == selectedTab ? 0.5: 0
+          /*
+          ZStack{
+            Image(systemName: "circle.fill")
+              .onTapGesture {
+                selectedTab = index
+              }
+              .foregroundColor(.white)
+              .font(.largeTitle)
+              .opacity(opacity)
+            Image(systemName: "circle.fill")
+              .onTapGesture {
+                selectedTab = index
+              }
+              .foregroundColor(.white)
+              .font(.title3)
+          }*/
+          ///Solution from boolk
+          ZStack {
+            Circle()
+              .frame(width: 32, height: 32)
+              .foregroundColor(fontColor)
+              .opacity(opacity)
+            Circle()
+              .frame(width: 16, height: 16)
+              .foregroundColor(fontColor)
+          }
+          .onTapGesture {
+            selectedTab = index
+          }
         }
 
       }
