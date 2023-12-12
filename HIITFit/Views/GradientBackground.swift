@@ -32,28 +32,31 @@
 
 import SwiftUI
 
-struct ContentView: View {
-//  @State private var selectedTab = 9
-  @SceneStorage("selectedTab") private var selectedTab = 9
+struct GradientBackground: View {
+  ///Simple gradient transitioning between three colors
+  /*var gradient: Gradient{
+    Gradient(colors: [Color("gradient-top"), Color("gradient-bottom"), Color("background")])
+  }*/
+  ///Gradient using stops to control the gradient changes
+  var gradient: Gradient{
+    let color1 = Color("gradient-top")
+    let color2 = Color("gradient-bottom")
+    let background = Color("background")
+    return Gradient(
+      stops: [
+        Gradient.Stop(color: color1, location: 0),
+        Gradient.Stop(color: color2, location: 0.9), ///Use purple to blue for 90% of the gradient
+        Gradient.Stop(color: background, location: 0.9), ///starting at 90% change color for remaining to background
+        Gradient.Stop(color: background, location: 1),
+      ]
+    )
+  }
   var body: some View {
-    ZStack{
-      GradientBackground()
-      
-      TabView(selection: $selectedTab){
-        WelcomeView(selectedTab: $selectedTab)
-          .tag(9)
-        ForEach(Exercise.exercises.indices, id:\.self){ index in
-          ExcerciseView(selectedTab: $selectedTab, index: index)
-            .tag(index)
-        }
-      }
-      .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
-    }
+    LinearGradient(gradient: gradient, startPoint: .top, endPoint: .bottom)
+      .ignoresSafeArea()
   }
 }
 
-struct ContentView_Previews: PreviewProvider {
-  static var previews: some View {
-    ContentView()
-  }
+#Preview {
+  GradientBackground()
 }
