@@ -35,6 +35,13 @@ struct ExerciseDay: Identifiable{
   let id = UUID()
   let date: Date
   var exercises: [String] = []
+  var uniqueExercises: [String] {
+    Array(Set(exercises)).sorted(by: <)
+  }
+  func countExercise(exercise: String) -> Int {
+    exercises.filter { $0 == exercise }.count
+  }
+
 }
 enum FileError: Error{
   case loadFailure
