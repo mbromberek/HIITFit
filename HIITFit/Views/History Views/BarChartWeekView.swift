@@ -39,7 +39,13 @@ struct BarChartWeekView: View {
   
   var body: some View {
     Chart(weekData) { day in
-      BarMark(x: .value("Date", day.date, unit: .day), y: .value("Total Count", day.exercises.count))
+      ForEach(Exercise.names, id: \.self){ name in
+        BarMark(
+          x: .value("Date", day.date, unit: .day),
+          y: .value("Total Count", day.countExercise(exercise: name))
+        )
+          .foregroundStyle(by: .value("Exercise", name))
+      }
     }
       .onAppear{
         let firstDate = history.exerciseDays.first?.date ?? Date()
@@ -49,6 +55,13 @@ struct BarChartWeekView: View {
         }
       }
       .padding()
+      .chartForegroundStyleScale([
+        "Burpee": Color("chart-burpee"),
+        "Squat": Color("chart-squat"),
+        "Step Up": Color("chart-step-up"),
+        "Sun Salute": Color("chart-sun-salute"),
+        
+      ])
   }
 }
 
