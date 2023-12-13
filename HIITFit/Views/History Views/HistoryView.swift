@@ -35,9 +35,17 @@ import SwiftUI
 struct HistoryView: View {
   @Binding var showHistory: Bool
   @EnvironmentObject var history: HistoryStore
+  @State private var addMode = false
   
   var headerView: some View {
     HStack {
+      Button{
+        addMode = true
+      } label: {
+        Image(systemName: "plus")
+      }
+        .padding(.trailing)
+      EditButton()
       Spacer()
       Text("History")
         .font(.title)
@@ -60,8 +68,19 @@ struct HistoryView: View {
           exerciseView(day: day)
         }
      */
+    /*
+     ///show just date, allows delete
     Text(day.date.formatted(as: "d MMM YYYY"))
       .font(.headline)
+     */
+    ///Hierarchical Grouping able to hide and show the exercise details for a day
+    DisclosureGroup{
+      exerciseView(day: day)
+        .deleteDisabled(true)
+    } label: {
+      Text(day.date.formatted(as: "d MMM YYYY"))
+        .font(.headline)
+    }
   }
   
   func exerciseView(day: ExerciseDay) -> some View {
@@ -73,7 +92,13 @@ struct HistoryView: View {
   
   var body: some View {
     VStack {
-      headerView
+      Group{
+        if addMode{
+          Text("History").font(.title)
+        }else{
+          headerView
+        }
+      }
         .padding()
       /*Form {
         ForEach(history.exerciseDays) { day in
@@ -82,6 +107,11 @@ struct HistoryView: View {
       }*/
       List($history.exerciseDays, editActions: [.delete]) { $day in
         dayView(day: day)
+      }
+      if addMode{
+        AddHistoryView(addMode: $addMode)
+          .background(Color.primary.colorInvert()
+            .shadow(color: .primary.opacity(0.5), radius: 7))
       }
     }
       .onDisappear{
