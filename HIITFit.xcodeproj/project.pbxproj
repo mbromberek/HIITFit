@@ -16,6 +16,7 @@
 		2738204E2B1CD68700F2DD6F /* ExcerciseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2738204D2B1CD68700F2DD6F /* ExcerciseView.swift */; };
 		273829682B23A740004CFFE2 /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 273829672B23A740004CFFE2 /* TimerView.swift */; };
 		274E13FE2B2A43840036D98F /* AddHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 274E13FD2B2A43840036D98F /* AddHistoryView.swift */; };
+		274E14002B2A67D80036D98F /* BarChartDayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 274E13FF2B2A67D80036D98F /* BarChartDayView.swift */; };
 		279151392B1EB774005FC595 /* HistoryStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 279151382B1EB774005FC595 /* HistoryStore.swift */; };
 		2791513B2B1F3DF5005FC595 /* HistoryStoreDevData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2791513A2B1F3DF5005FC595 /* HistoryStoreDevData.swift */; };
 		2791513D2B1FE15F005FC595 /* SuccessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2791513C2B1FE15F005FC595 /* SuccessView.swift */; };
@@ -47,6 +48,7 @@
 		2738204D2B1CD68700F2DD6F /* ExcerciseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExcerciseView.swift; sourceTree = "<group>"; };
 		273829672B23A740004CFFE2 /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
 		274E13FD2B2A43840036D98F /* AddHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddHistoryView.swift; sourceTree = "<group>"; };
+		274E13FF2B2A67D80036D98F /* BarChartDayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarChartDayView.swift; sourceTree = "<group>"; };
 		279151382B1EB774005FC595 /* HistoryStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryStore.swift; sourceTree = "<group>"; };
 		2791513A2B1F3DF5005FC595 /* HistoryStoreDevData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryStoreDevData.swift; sourceTree = "<group>"; };
 		2791513C2B1FE15F005FC595 /* SuccessView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuccessView.swift; sourceTree = "<group>"; };
@@ -116,6 +118,7 @@
 			children = (
 				27C6F93C2B1EAA9D00955C91 /* HistoryView.swift */,
 				274E13FD2B2A43840036D98F /* AddHistoryView.swift */,
+				274E13FF2B2A67D80036D98F /* BarChartDayView.swift */,
 			);
 			path = "History Views";
 			sourceTree = "<group>";
@@ -287,6 +290,7 @@
 				2738204E2B1CD68700F2DD6F /* ExcerciseView.swift in Sources */,
 				27C6F93D2B1EAA9D00955C91 /* HistoryView.swift in Sources */,
 				CD30C93F25147A8C0049DB93 /* DateExtension.swift in Sources */,
+				274E14002B2A67D80036D98F /* BarChartDayView.swift in Sources */,
 				CD30C924251474DC0049DB93 /* HIITFitApp.swift in Sources */,
 				CD30C94025147A8C0049DB93 /* ImageExtension.swift in Sources */,
 				27C6F9332B1D626A00955C91 /* HeaderView.swift in Sources */,
