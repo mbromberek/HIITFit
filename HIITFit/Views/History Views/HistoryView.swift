@@ -75,7 +75,8 @@ struct HistoryView: View {
      */
     ///Hierarchical Grouping able to hide and show the exercise details for a day
     DisclosureGroup{
-      exerciseView(day: day)
+//      exerciseView(day: day)
+      BarChartDayView(day: day)
         .deleteDisabled(true)
     } label: {
       Text(day.date.formatted(as: "d MMM YYYY"))
