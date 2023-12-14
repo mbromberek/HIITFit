@@ -32,86 +32,52 @@
 
 import SwiftUI
 
-struct WelcomeView: View {
-  @Binding var selectedTab: Int
-  @State private var showHistory = false
-  @State private var showReport = false
-  var getStartedButton: some View{
-    RaisedButton(buttonText: "Get Started"){
-      selectedTab = 0
+struct ReportView: View {
+  @Binding var showReport: Bool
+  @EnvironmentObject var history: HistoryStore
+  @State private var barChart = true
+  
+  var headerView: some View {
+    HStack {
+      Spacer()
+      Text("History for Last Week")
+        .font(.title)
+      Spacer()
+      Button {
+        showReport.toggle()
+      } label: {
+        Image(systemName: "xmark.circle")
+      }
+      .font(.title)
     }
-      .padding()
   }
-  var historyButton: some View{
-    Button(
-      action: {
-        showHistory = true
-      }, label: {
-        Text("History")
-          .fontWeight(.bold)
-          .padding([.leading, .trailing], 5)
-      }
-    )
-      .padding(.bottom, 10)
-      .buttonStyle(EmbossedButtonStyle())
-  }
-  var reportButton: some View{
-    Button(
-      action: {
-        showReport = true
-      }, label: {
-        Text("Report")
-          .fontWeight(.bold)
-          .padding([.leading, .trailing], 5)
-      }
-    )
-    .padding(.bottom, 10)
-    .buttonStyle(EmbossedButtonStyle())
-  }
+  
   var body: some View {
-    GeometryReader{ geometry in
-      VStack{
-        HeaderView(selectedTab: $selectedTab, titleText: "Welcome")
-//        Spacer()
-        //container view
-        ContainerView{
-          ViewThatFits{
-            VStack{
-              WelcomeView.images
-              WelcomeView.welcomeText
-              getStartedButton
-              Spacer()
-              HStack{
-                historyButton
-                  .padding(.trailing)
-                reportButton
-                  .padding(.leading)
-              }
-            }
-            
-            VStack{
-              WelcomeView.welcomeText
-              getStartedButton
-              Spacer()
-              HStack{
-                historyButton
-                reportButton
-              }
-            }
-          }
+    VStack{
+      headerView
+        .padding()
+      if barChart {
+        BarChartWeekView()
+      }else{
+        LineChartWeekView()
+      }
+      
+      HStack{
+        Toggle(isOn: $barChart, label: {
+          Text("Bar Chart").font(.title2)
+        })
+        .onTapGesture {
+          barChart.toggle()
         }
-          .frame(height: geometry.size.height * 0.8)
-      }
-      .sheet(isPresented: $showHistory) {
-        HistoryView(showHistory: $showHistory)
-      }
-      .sheet(isPresented: $showReport) {
-        ReportView(showReport: $showReport)
-      }
+      }.padding()
     }
   }
 }
 
-#Preview {
-  WelcomeView(selectedTab: .constant(9))
+struct ReportView_Previews: PreviewProvider {
+  static var history = HistoryStore(preview: true)
+  static var previews: some View {
+    ReportView(showReport: .constant(true))
+      .environmentObject(history)
+  }
 }
